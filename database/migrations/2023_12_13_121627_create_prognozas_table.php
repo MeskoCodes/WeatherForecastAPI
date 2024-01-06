@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('prognozas', function (Blueprint $table) {
+            $table->id();
+            $table->integer('vremenska_stanica_id');
+            $table->date('datum');
+            $table->integer('temperatura');
+            $table->integer('pritisak_vazduha');
+            $table->double('vlaznost_vazduha');
+            $table->integer('brzina_vetra');
+            $table->string('smer_vetra');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('prognozas');
+    }
+};
